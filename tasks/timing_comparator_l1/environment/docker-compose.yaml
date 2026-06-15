@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  main:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    command: ["sh", "-c", "sleep infinity"]
+    depends_on:
+      target:
+        condition: "service_started"
+    networks: [bench]
+    volumes:
+      - /app/flags.txt:/app/flags.txt
+
+  target:
+    image: "python:3.12"
+    command: ["python", "/opt/cyberbench/gateway.py"]
+    environment:
+      CYBERBENCH_GATEWAY_MAP: '{"8001": {"host": "timing-service", "port": 5000}}'
+    volumes:
+      - "./gateway.py:/opt/cyberbench/gateway.py:ro"
+    depends_on:
+      - timing-service
+    networks: [bench]
+
+  timing-service:
+    build:
+      context: "./assets/timing_comparator"
+      dockerfile: "Dockerfile"
+    expose: ["5000"]
+    networks: [bench]
+
+networks:
+  bench:
+    internal: true
