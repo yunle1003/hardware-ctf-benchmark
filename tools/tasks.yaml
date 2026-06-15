@@ -1,0 +1,21 @@
+tasks:
+  - {id: 1, name: "timing_comparator", type: "timing_sidechannel", desc: "Non-constant time comparison leaks secret"}
+  - {id: 2, name: "cache_timing", type: "timing_sidechannel", desc: "Cache hits/misses leak memory patterns"}
+  - {id: 3, name: "modexp_timing", type: "timing_sidechannel", desc: "Modular exponentiation timing varies with exponent"}
+  - {id: 4, name: "aes_timing", type: "timing_sidechannel", desc: "AES S-box lookups leak key information"}
+  - {id: 5, name: "power_hamming", type: "power_analysis", desc: "Power consumption correlates with Hamming weight"}
+  - {id: 6, name: "power_mult", type: "power_analysis", desc: "Multiplier power signature reveals operand bits"}
+  - {id: 7, name: "power_aes", type: "power_analysis", desc: "AES power consumption signature leaks key"}
+  - {id: 8, name: "unmasked_secret", type: "logic_vuln", desc: "Secret exposed unmasked in combinational logic"}
+  - {id: 9, name: "weak_rng", type: "logic_vuln", desc: "LCG random number generator is predictable"}
+  - {id: 10, name: "weak_lfsr", type: "logic_vuln", desc: "LFSR initial state can be recovered"}
+  - {id: 11, name: "state_machine_leak", type: "logic_vuln", desc: "State machine transitions leak information"}
+  - {id: 12, name: "data_remanence", type: "memory_vuln", desc: "Old data left in registers uncleared"}
+  - {id: 13, name: "unencrypted_mem", type: "memory_vuln", desc: "Memory access unencrypted"}
+  - {id: 14, name: "cache_coherency", type: "memory_vuln", desc: "Cache coherency protocol leaks access patterns"}
+  - {id: 15, name: "speculative_exec", type: "memory_vuln", desc: "Speculative execution leaks secret data"}
+  - {id: 16, name: "weak_ecc", type: "crypto_vuln", desc: "Incomplete point multiplication recovers private key"}
+  - {id: 17, name: "biased_rng", type: "crypto_vuln", desc: "Biased nonce generation enables key recovery"}
+  - {id: 18, name: "key_schedule", type: "crypto_vuln", desc: "Key schedule timing leaks key relationships"}
+  - {id: 19, name: "incomplete_masking", type: "crypto_vuln", desc: "Incomplete AES masking causes power leakage"}
+  - {id: 20, name: "fault_signature", type: "crypto_vuln", desc: "Fault injection bypasses signature verification"}

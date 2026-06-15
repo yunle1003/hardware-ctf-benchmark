@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  ctf:
+    build:
+      context: ./environment
+      dockerfile: Dockerfile
+    image: hardware-ctf:latest
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: /bin/bash
