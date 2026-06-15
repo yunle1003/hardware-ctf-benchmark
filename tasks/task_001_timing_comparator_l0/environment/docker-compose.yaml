@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hardware-ctf:timing-comparator-l0
+    environment:
+      TASK_NAME: "timing_comparator"
+      SECRET: "0xDEADBEEF"
+    volumes:
+      - ./assets:/workspace/assets:ro
+      - /tmp/flags:/app
+      - /tmp/logs:/logs
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    networks:
+      - ctf-net
+
+networks:
+  ctf-net:
+    internal: false
